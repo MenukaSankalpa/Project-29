@@ -25,4 +25,10 @@ search_icon=PhotoImage(file="Weatherapp\search_icon.png")
 myimage_icon=Label(image=search_icon,borderwidth=0,cursor="hand2",bg="#404040")
 myimage_icon.place(x=400,y=34)
 
+#logo
+Logo_image=PhotoImage(file="Weatherapp\logo.png")
+logo=Label(image=Logo_image)
+logo.place(x=150,y=100)
+
+
 root.mainloop()
