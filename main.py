@@ -12,6 +12,15 @@ root.title("Weather App")
 root.geometry("900x500+300+200")
 root.resizable(False,False)
 
+def getWeather():
+    city=textfield.get()
+    
+    geolocator= Nominatim(user_agent="geoapiExercicises")
+    location= geolocator.geocode(city)
+    obj=TimezoneFinder()
+    result=obj.timezone_at(lng=location.longitude,lat=location.latitude)
+    print(result)
+
 #search box
 search_image=PhotoImage(file=r"Weatherapp\search.png")
 myimage=Label(image=search_image)
@@ -22,7 +31,7 @@ textfield.place(x=50, y=40)
 textfield.focus()
 
 search_icon=PhotoImage(file=r"Weatherapp\search_icon.png")
-myimage_icon=Label(image=search_icon,borderwidth=0,cursor="hand2",bg="#404040")
+myimage_icon=Button(image=search_icon,borderwidth=0,cursor="hand2",bg="#404040",command=getWeather)
 myimage_icon.place(x=400,y=34)
 
 #logo
@@ -48,5 +57,19 @@ label3.place(x=430,y=400)
 
 label4=Label(root,text="Pressure",font=("Helvetica",15,"bold"),fg="white",bg="#1ab5ef")
 label4.place(x=650,y=400)
+
+t=Label(font=("arial",70,"bold"),fg="#ee666d")
+t.place(x=400,y=150)
+c=Label(font=("arial",15,"bold"))
+c.place(x=400,y=250)
+
+w=Label(text="...",font=("arial",20,"bold"),bg="#1ab5ef")
+w.place(x=120,y=430)
+h=Label(text="...",font=("arial",20,"bold"),bg="#1ab5ef")
+h.place(x=280,y=430)
+d=Label(text="...",font=("arial",20,"bold"),bg="#1ab5ef")
+d.place(x=450,y=430)
+p=Label(text="...",font=("arial",20,"bold"),bg="#1ab5ef")
+p.place(x=670,y=430)
 
 root.mainloop()
